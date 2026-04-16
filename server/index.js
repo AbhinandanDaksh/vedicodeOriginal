@@ -8,6 +8,7 @@ const courseRoutes = require("./routes/Course");
 const contactUsRoute = require("./routes/Contact");
 const database = require("./config/database");
 
+const os = require("os");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const {cloudinaryConnect } = require("./config/cloudinary");
@@ -32,8 +33,8 @@ app.use(
 
 app.use(
 	fileUpload({
-		useTempFiles:true,
-		tempFileDir:"/tmp",
+		useTempFiles: true,
+		tempFileDir: os.tmpdir(),
 	})
 )
 //cloudinary connection

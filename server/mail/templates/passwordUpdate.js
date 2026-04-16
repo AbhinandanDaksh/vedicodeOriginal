@@ -1,4 +1,6 @@
 exports.passwordUpdated = (email, name) => {
+    const { getMailBranding } = require("./mailLogo");
+    const { clientUrl, logoSrc } = getMailBranding();
 	return `<!DOCTYPE html>
     <html>
     
@@ -55,8 +57,8 @@ exports.passwordUpdated = (email, name) => {
     
     <body>
         <div class="container">
-            <a href="https://studynotion-edtech-project.vercel.app"><img class="logo"
-                    src="https://res.cloudinary.com/dq7z1anw8/image/upload/v1715970026/CodeHash/c3x7yxamxlre0ytdwjxn.png" alt="StudyNotion Logo"></a>
+            <a href="${clientUrl}"><img class="logo"
+                    src="${logoSrc}" alt="VediCode Logo"></a>
             <div class="message">Password Update Confirmation</div>
             <div class="body">
                 <p>Hey ${name},</p>
@@ -66,7 +68,7 @@ exports.passwordUpdated = (email, name) => {
             </div>
             <div class="support">If you have any questions or need further assistance, please feel free to reach out to us
                 at
-                <a href="mailto:codehashproject@gmail.com">Codehashproject@gmail.com</a>. We are here to help!
+                <a href="mailto:abhinandandaksh946@gmail.com">abhinandandaksh946@gmail.com</a>. We are here to help!
             </div>
         </div>
     </body>

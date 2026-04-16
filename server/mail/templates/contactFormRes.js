@@ -6,6 +6,8 @@ exports.contactUsEmail = (
     phoneNo,
     countrycode
   ) => {
+    const { getMailBranding } = require("./mailLogo");
+    const { clientUrl, logoSrc } = getMailBranding();
     return `<!DOCTYPE html>
     <html>
     
@@ -74,8 +76,8 @@ exports.contactUsEmail = (
     
     <body>
         <div class="container">
-            <a href="https://studynotion-edtech-project.vercel.app"><img class="logo"
-                    src="https://res.cloudinary.com/dq7z1anw8/image/upload/v1715970026/CodeHash/c3x7yxamxlre0ytdwjxn.png" alt="StudyNotion Logo"></a>
+            <a href="${clientUrl}"><img class="logo"
+                    src="${logoSrc}" alt="VediCode Logo"></a>
             <div class="message">Contact Form Confirmation</div>
             <div class="body">
                 <p>Dear ${firstname} ${lastname},</p>
@@ -89,7 +91,7 @@ exports.contactUsEmail = (
                 <p>We appreciate your interest and will get back to you shortly. </p>
             </div>
             <div class="support">If you have any further questions or need immediate assistance, please feel free to reach
-                out to us at<a href="mailto:codehashproject@gmail.com">Codehashproject@gmail.com</a>. We are here to help!</div>
+                out to us at<a href="mailto:abhinandandaksh946@gmail.com">abhinandandaksh946@gmail.com</a>. We are here to help!</div>
         </div>
     </body>
     

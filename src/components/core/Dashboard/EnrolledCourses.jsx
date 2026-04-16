@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import ProgressBar from "@ramonak/react-progress-bar"
-import { BiDotsVerticalRounded } from "react-icons/bi"
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 
@@ -11,7 +10,7 @@ export default function EnrolledCourses() {
   const navigate = useNavigate()
 
   const [enrolledCourses, setEnrolledCourses] = useState(null)
-  const getEnrolledCourses = async () => {
+  const getEnrolledCourses = useCallback(async () => {
     try {
       const res = await getUserEnrolledCourses(token);
 
@@ -19,10 +18,10 @@ export default function EnrolledCourses() {
     } catch (error) {
       console.log("Could not fetch enrolled courses.")
     }
-  };
+  }, [token]);
   useEffect(() => {
     getEnrolledCourses();
-  }, [])
+  }, [getEnrolledCourses])
 
   return (
     <>

@@ -3,9 +3,6 @@ import { FooterLink2 } from "../../data/footer-links";
 import { Link } from "react-router-dom";
 import logo from "../../assets/Logo/VediCode.png"
 
-// Images
-import Logo from "../../assets/Logo/Logo2.png";
-
 // Icons
 import { FaFacebook, FaGoogle, FaTwitter, FaYoutube } from "react-icons/fa";
 

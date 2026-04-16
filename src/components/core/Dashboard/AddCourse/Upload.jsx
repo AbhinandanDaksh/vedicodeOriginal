@@ -1,7 +1,6 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 import { useDropzone } from "react-dropzone"
 import { FiUploadCloud } from "react-icons/fi"
-import { useSelector } from "react-redux"
 
 import "video-react/dist/video-react.css"
 import { Player } from "video-react"
@@ -16,12 +15,10 @@ export default function Upload({
   viewData = null,
   editData = null,
 }) {
-  const { course } = useSelector((state) => state.course)
   const [selectedFile, setSelectedFile] = useState(null)
   const [previewSource, setPreviewSource] = useState(
     viewData ? viewData : editData ? editData : ""
   )
-  const inputRef = useRef(null)
 
   const onDrop = (acceptedFiles) => {
     const file = acceptedFiles[0]
@@ -36,10 +33,11 @@ export default function Upload({
       ? { "image/*": [".jpeg", ".jpg", ".png"] }
       : { "video/*": [".mp4"] },
     onDrop,
+    noClick: false,
+    noKeyboard: false,
   })
 
   const previewFile = (file) => {
-    // console.log(file)
     const reader = new FileReader()
     reader.readAsDataURL(file)
     reader.onloadend = () => {
@@ -53,9 +51,16 @@ export default function Upload({
   }, [register])
 
   useEffect(() => {
-    setValue(name, selectedFile)
+    setValue(name, selectedFile, { shouldValidate: true, shouldDirty: true })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedFile, setValue])
+
+  useEffect(() => {
+    if (editData && !selectedFile) {
+      setValue(name, editData, { shouldValidate: true })
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [editData])
 
   return (
     <div className="flex flex-col space-y-2">
@@ -63,10 +68,14 @@ export default function Upload({
         {label} {!viewData && <sup className="text-pink-200">*</sup>}
       </label>
       <div
-        className={`${
-          isDragActive ? "bg-richblack-600" : "bg-richblack-700"
-        } flex min-h-[250px] cursor-pointer items-center justify-center rounded-md border-2 border-dotted border-richblack-500`}
+        {...getRootProps({
+          className: `${
+            isDragActive ? "bg-richblack-600" : "bg-richblack-700"
+          } flex min-h-[250px] cursor-pointer flex-col items-center justify-center rounded-md border-2 border-dotted border-richblack-500`,
+        })}
       >
+        {/* Do not put a custom ref on this input — it breaks react-dropzone's file dialog */}
+        <input {...getInputProps()} />
         {previewSource ? (
           <div className="flex w-full flex-col p-6">
             {!video ? (
@@ -81,23 +90,20 @@ export default function Upload({
             {!viewData && (
               <button
                 type="button"
-                onClick={() => {
+                onClick={(e) => {
+                  e.stopPropagation()
                   setPreviewSource("")
                   setSelectedFile(null)
-                  setValue(name, null)
+                  setValue(name, null, { shouldValidate: true })
                 }}
-                className="mt-3 text-richblack-400 underline"
+                className="mt-3 text-left text-richblack-400 underline"
               >
                 Cancel
               </button>
             )}
           </div>
         ) : (
-          <div
-            className="flex w-full flex-col items-center p-6"
-            {...getRootProps()}
-          >
-            <input {...getInputProps()} ref={inputRef} />
+          <div className="flex w-full flex-col items-center p-6">
             <div className="grid aspect-square w-14 place-items-center rounded-full bg-pure-greys-800">
               <FiUploadCloud className="text-2xl text-orange-500" />
             </div>

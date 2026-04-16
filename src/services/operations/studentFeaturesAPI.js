@@ -45,9 +45,9 @@ export async function buyCourse(token, courses, userDetails, navigate, dispatch)
         if(!orderResponse.data.success) {
             throw new Error(orderResponse.data.message);
         }
-        console.log("PRINTING orderResponse", orderResponse);
+        // console.log("PRINTING orderResponse", orderResponse);
         //options
-        console.log(orderResponse)
+        // console.log(orderResponse)
         const options = {
             key: "rzp_test_RKM1U21i5vpFGb",
             currency: orderResponse.data.data.currency,
@@ -68,18 +68,18 @@ export async function buyCourse(token, courses, userDetails, navigate, dispatch)
                 verifyPayment({...response, courses}, token, navigate, dispatch);
             }
         }
-        console.log(options)
+        // console.log(options)
         //miss hogya tha 
         const paymentObject = new window.Razorpay(options);
         paymentObject.open();
         paymentObject.on("payment.failed", function(response) {
             toast.error("oops, payment failed");
-            console.log(response.error);
+            // console.log(response.error);
         })
 
     }
     catch(error) {
-        console.log("PAYMENT API ERROR.....", error);
+        // console.log("PAYMENT API ERROR.....", error);
         toast.error("Could not make Payment");
     }
     toast.dismiss(toastId);
@@ -96,7 +96,7 @@ async function sendPaymentSuccessEmail(response, amount, token) {
         })
     }
     catch(error) {
-        console.log("PAYMENT SUCCESS EMAIL ERROR....", error);
+        // console.log("PAYMENT SUCCESS EMAIL ERROR....", error);
     }
 }
 
@@ -117,7 +117,7 @@ async function verifyPayment(bodyData, token, navigate, dispatch) {
         dispatch(resetCart());
     }   
     catch(error) {
-        console.log("PAYMENT VERIFY ERROR....", error);
+        // console.log("PAYMENT VERIFY ERROR....", error);
         toast.error("Could not verify Payment");
     }
     toast.dismiss(toastId);

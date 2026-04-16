@@ -1,4 +1,6 @@
 exports.paymentSuccessEmail = (name, amount, orderId, paymentId) => {
+    const { getMailBranding } = require("./mailLogo");
+    const { clientUrl, logoSrc } = getMailBranding();
     return `<!DOCTYPE html>
       <html>
       
@@ -67,8 +69,8 @@ exports.paymentSuccessEmail = (name, amount, orderId, paymentId) => {
       
       <body>
           <div class="container">
-              <a href="https://res.cloudinary.com/dq7z1anw8/image/upload/v1715970026/CodeHash/c3x7yxamxlre0ytdwjxn.png"><img class="logo" src="https://res.cloudinary.com/dq7z1anw8/image/upload/v1715970026/CodeHash/c3x7yxamxlre0ytdwjxn.png"
-                      alt="StudyNotion Logo"></a>
+              <a href="${clientUrl}"><img class="logo" src="${logoSrc}"
+                      alt="VediCode Logo"></a>
               <div class="message">Course Payment Confirmation</div>
               <div class="body">
                   <p>Dear ${name},</p>
@@ -77,7 +79,7 @@ exports.paymentSuccessEmail = (name, amount, orderId, paymentId) => {
                   <p>Your Order ID is <b>${orderId}</b></p>
               </div>
               <div class="support">If you have any questions or need assistance, please feel free to reach out to us at 
-              <a href="mailto:codehashproject@gmail.com">Codehashproject@gmail.com</a>. We are here to help!
+              <a href="mailto:abhinandandaksh946@gmail.com">abhinandandaksh946@gmail.com</a>. We are here to help!
           </div>
       </body>
       

@@ -1,4 +1,5 @@
 const BASE_URL = "http://localhost:4000/api/v1"
+const PRODUCTION_BASE_URL = "https://vedicodeoriginal.onrender.com/api/v1"
 
 // AUTH ENDPOINTS
 export const endpoints = {

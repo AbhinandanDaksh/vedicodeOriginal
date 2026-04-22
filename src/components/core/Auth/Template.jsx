@@ -18,7 +18,7 @@ function Template({ title, description1, description2, image, formType }) {
             </h1>
             <p className="mt-4 text-[1.125rem] leading-[1.625rem]">
               <span className="text-richblack-100">{description1}</span>{" "}
-              <span className="font-edu-sa font-bold italic text-violet-600">
+              <span className="font-edu-sa font-bold italic text-orange-500">
                 {description2}
               </span>
             </p>

@@ -1,8 +1,10 @@
 import React from "react";
 
-const HighlightText = ({text}) => {
+const HighlightText = ({ text, className = "" }) => {
   return (
-    <span className="bg-gradient-to-b from-[#842a79] via-[#bc3db1] to-[#e88ae1] text-transparent bg-clip-text font-bold">
+    <span
+      className={`bg-gradient-to-r from-orange-400 via-orange-500 to-amber-500 bg-clip-text font-bold text-transparent ${className}`}
+    >
       {" "}
       {text}
     </span>

@@ -55,7 +55,7 @@ export default function RequirementsField({
         <button
           type="button"
           onClick={handleAddRequirement}
-          className="font-semibold text-violet-600"
+          className="font-semibold text-orange-500"
         >
           Add
         </button>

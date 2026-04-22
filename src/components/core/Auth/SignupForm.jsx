@@ -198,7 +198,7 @@ function SignupForm() {
         </div>
         <button
           type="submit"
-          className="mt-6 rounded-[8px] bg-orange-500 py-[8px] px-[12px] font-medium text-richblack-900"
+          className="mt-6 rounded-[8px] bg-orange-500 py-[8px] px-[12px] font-medium text-richblack-900 transition-colors hover:bg-orange-600"
         >
           Create Account
         </button>

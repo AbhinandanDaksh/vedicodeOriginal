@@ -7,27 +7,26 @@ import HighlightText from './HighlightText';
 const InstructorSection = () => {
   return (
     <div>
-        <div className="flex flex-col lg:flex-row gap-20 items-center">
-          <div className="lg:w-[50%] pl-32 ">
+        <div className="flex flex-col items-center gap-12 lg:flex-row lg:gap-20">
+          <div className="w-full pl-0 lg:w-[50%] lg:pl-12">
             <img
               src={Instructor}
-              alt=""
-              className="w-[90%] shadow-[10px_-5px_50px_-5px] shadow-orange-500"
+              alt="VediCode instructor"
+              className="mx-auto w-full max-w-md rounded-2xl shadow-[0_25px_50px_-12px_rgba(234,88,12,0.35)] sm:max-w-lg lg:mx-0 lg:w-[90%]"
             />
           </div>
-          <div className="lg:w-[50%] flex gap-10 flex-col">
-            <h1 className="lg:w-[50%] text-4xl font-semibold ">
+          <div className="flex w-full max-w-lg flex-col gap-8 lg:max-w-none lg:w-[50%]">
+            <h2 className="text-center text-3xl font-semibold sm:text-4xl lg:text-left">
               Become an
               <HighlightText text={"instructor"} />
-            </h1>
+            </h2>
 
-            <p className="font-medium text-[16px] text-justify w-[90%] text-richblack-300">
-              Instructors from around the world teach millions of students on
-              VediCode. We provide the tools and skills to teach what you
-              love.
+            <p className="w-full text-justify text-[16px] font-medium leading-relaxed text-richblack-300">
+              Instructors from around the world teach students on VediCode. We
+              provide the tools and support so you can share what you love.
             </p>
 
-            <div className="w-fit">
+            <div className="mx-auto w-fit lg:mx-0">
               <CTAButton active={true} linkto={"/signup"}>
                 <div className="flex items-center gap-3">
                   Start Teaching Today

@@ -12,7 +12,7 @@ const TimeLine = [
     {
       Logo: Logo1,
       Heading: "Leadership",
-      Description: "Fully committed to the success company",
+      Description: "Fully committed to our learners' success",
     },
     {
       Logo: Logo2,
@@ -41,12 +41,14 @@ const TimelineSection = () => {
             return (
               <div className="flex flex-col lg:gap-3" key={i}>
                 <div className="flex gap-6" key={i}>
-                  <div className="w-[52px] h-[52px] bg-white rounded-full flex justify-center items-center shadow-lavender-magenta-400 shadow-[0_0_62px_0]">
+                  <div className="w-[52px] h-[52px] flex justify-center items-center rounded-full bg-white shadow-[0_0_48px_0] shadow-orange-400/50">
                     <img src={ele.Logo} alt="" />
                   </div>
                   <div>
-                    <h2 className="font-semibold text-[18px] text-black">{ele.Heading}</h2>
-                    <p className="text-base text-black">{ele.Description}</p>
+                    <h2 className="text-[18px] font-semibold text-richblack-800">
+                      {ele.Heading}
+                    </h2>
+                    <p className="text-base text-richblack-600">{ele.Description}</p>
                   </div>
                 </div>
                 <div

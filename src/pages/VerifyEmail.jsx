@@ -83,7 +83,7 @@ function VerifyEmail() {
             />
             <button
               type="submit"
-              className="w-full bg-orange-500 py-[12px] px-[12px] rounded-[8px] mt-6 font-medium text-richblack-900"
+              className="mt-6 w-full rounded-[8px] bg-orange-500 py-[12px] px-[12px] font-medium text-richblack-900 transition-colors hover:bg-orange-600"
             >
               Verify Email
             </button>
@@ -95,7 +95,7 @@ function VerifyEmail() {
               </p>
             </Link>
             <button
-              className="flex items-center text-violet-600 gap-x-2"
+              className="flex items-center gap-x-2 text-orange-500"
               onClick={() => dispatch(sendOtp(signupData.email))}
             >
               <RxCountdownTimer />

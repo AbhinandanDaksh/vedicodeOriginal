@@ -212,7 +212,7 @@ details > summary::-webkit-details-marker {
 
 /* Buttons */
 .yellowButton {
-  @apply cursor-pointer rounded-md bg-lavender-magenta-700 px-[20px] py-[8px] font-semibold text-richblack-900;
+  @apply cursor-pointer rounded-md bg-orange-500 px-[20px] py-[8px] font-semibold text-richblack-900 transition-all hover:bg-orange-600;
 }
 
 /* Swiper CSS Starts */

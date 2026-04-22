@@ -4,7 +4,6 @@ import FoundingStory from "../assets/Images/FoundingStory.png"
 import BannerImage1 from "../assets/Images/aboutus1.webp"
 import BannerImage2 from "../assets/Images/aboutus2.webp"
 import BannerImage3 from "../assets/Images/aboutus3.webp"
-// import Footer from "../components/common/Footer"
 import ContactFormSection from "../components/core/AboutPage/ContactFormSection"
 import LearningGrid from "../components/core/AboutPage/LearningGrid"
 import Quote from "../components/core/AboutPage/Quote"
@@ -15,88 +14,118 @@ import Footer from "../components/common/Footer"
 
 const About = () => {
   return (
-    <div>
-      <section className="bg-richblack-700">
-        <div className="relative mx-auto flex w-11/12 max-w-maxContent flex-col justify-between gap-10 text-center text-white">
-          <header className="mx-auto py-20 text-4xl font-semibold lg:w-[70%]">
-            Driving Innovation in Online Education for a
-            <HighlightText text={"Brighter Future"} />
-            <p className="mx-auto mt-3 text-center text-base font-medium text-richblack-300 lg:w-[95%]">
-              VediCode is at the forefront of driving innovation in online
-              education. We're passionate about creating a brighter future by
-              offering cutting-edge courses, leveraging emerging technologies,
-              and nurturing a vibrant learning community.
-            </p>
-          </header>
-          <div className="sm:h-[70px] lg:h-[150px]"></div>
-          <div className="absolute bottom-0 left-[50%] grid w-[100%] translate-x-[-50%] translate-y-[30%] grid-cols-3 gap-3 lg:gap-5">
-            <img src={BannerImage1} alt="" />
-            <img src={BannerImage2} alt="" />
-            <img src={BannerImage3} alt="" />
+    <div className="bg-richblack-900 text-white">
+      {/* Hero */}
+      <section className="relative border-b border-white/5">
+        <div className="mx-auto max-w-maxContent px-4 pb-28 pt-16 text-center sm:px-6 lg:px-8 lg:pb-36">
+          <p className="mb-4 text-sm font-medium uppercase tracking-[0.2em] text-richblack-200">
+            About VediCode
+          </p>
+          <h1 className="mx-auto max-w-3xl text-3xl font-semibold leading-tight sm:text-4xl lg:text-5xl">
+            Building a
+            <HighlightText text={"brighter future"} />
+            <span className="text-richblack-5">
+              {" "}
+              with practical tech education
+            </span>
+          </h1>
+          <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-richblack-200 sm:text-lg">
+            We help learners and instructors connect through structured
+            courses, real projects, and a community that supports growth—not
+            just certificates.
+          </p>
+        </div>
+
+        <div className="mx-auto -mt-10 max-w-maxContent px-4 sm:px-6 lg:-mt-16 lg:px-8">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-5">
+            <img
+              src={BannerImage1}
+              alt="Students learning online"
+              className="h-48 w-full rounded-2xl object-cover shadow-lg shadow-black/30 sm:h-56"
+            />
+            <img
+              src={BannerImage2}
+              alt="Collaboration and code"
+              className="h-48 w-full rounded-2xl object-cover object-top shadow-lg shadow-black/30 sm:h-56"
+            />
+            <img
+              src={BannerImage3}
+              alt="Mentorship and support"
+              className="h-48 w-full rounded-2xl object-cover shadow-lg shadow-black/30 sm:h-56"
+            />
           </div>
         </div>
       </section>
 
-      <section className="border-b border-richblack-700">
-        <div className="mx-auto flex w-11/12 max-w-maxContent flex-col justify-between gap-10 text-richblack-500">
-          <div className="h-[100px] "></div>
+      {/* Quote */}
+      <section className="border-b border-white/5 bg-richblack-800/50 py-16">
+        <div className="mx-auto max-w-maxContent px-4 sm:px-6 lg:px-8">
           <Quote />
         </div>
       </section>
 
-      <section>
-        <div className="mx-auto flex w-11/12 max-w-maxContent flex-col justify-between gap-10 text-richblack-500">
-          <div className="flex flex-col items-center gap-10 lg:flex-row justify-between">
-            <div className="my-24 flex lg:w-[50%] flex-col gap-10">
-              <h1 className="bg-gradient-to-br from-[#833AB4] via-[#FD1D1D] to-[#FCB045] bg-clip-text text-4xl font-semibold text-transparent lg:w-[70%] ">
-                Our Founding Story
-              </h1>
-              <p className="text-base font-medium text-richblack-300 lg:w-[95%]">
-                Our e-learning platform was born out of a shared vision and
-                passion for transforming education. It all began with a group of
-                educators, technologists, and lifelong learners who recognized
-                the need for accessible, flexible, and high-quality learning
-                opportunities in a rapidly evolving digital world.
+      {/* Story + image */}
+      <section className="py-16 lg:py-24">
+        <div className="mx-auto max-w-maxContent px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col items-center gap-12 lg:flex-row lg:items-start lg:gap-16">
+            <div className="flex flex-1 flex-col gap-6 text-left">
+              <h2 className="max-w-lg text-3xl font-semibold sm:text-4xl">
+                <span className="bg-gradient-to-r from-orange-500 to-amber-500 bg-clip-text text-transparent">
+                  Our founding story
+                </span>
+              </h2>
+              <p className="text-base font-medium leading-relaxed text-richblack-200">
+                VediCode started from a simple belief: high-quality tech
+                education should be within reach for anyone willing to put in
+                the work. Educators and builders came together to create a
+                place where lessons map to real job skills—not only slides and
+                theory.
               </p>
-              <p className="text-base font-medium text-richblack-300 lg:w-[95%]">
-                As experienced educators ourselves, we witnessed firsthand the
-                limitations and challenges of traditional education systems. We
-                believed that education should not be confined to the walls of a
-                classroom or restricted by geographical boundaries. We
-                envisioned a platform that could bridge these gaps and empower
-                individuals from all walks of life to unlock their full
-                potential.
+              <p className="text-base font-medium leading-relaxed text-richblack-200">
+                We saw how many learners were stuck between scattered tutorials
+                and unclear next steps. So we built a platform that combines
+                structured paths, projects you can show in interviews, and
+                support from people who have been there before.
               </p>
             </div>
-
-            <div>
+            <div className="w-full max-w-md flex-shrink-0 lg:max-w-lg">
               <img
                 src={FoundingStory}
-                alt=""
-                className="shadow-[0_0_20px_0] shadow-orange-500"
+                alt="VediCode founding team vision"
+                className="w-full rounded-2xl object-cover shadow-[0_0_40px_-8px] shadow-orange-500/40"
               />
             </div>
           </div>
-          <div className="flex flex-col items-center lg:gap-10 lg:flex-row justify-between">
-            <div className="my-24 flex lg:w-[40%] flex-col gap-10">
-              <h1 className="bg-gradient-to-b from-lavender-magenta-600 to-lavender-magenta-400 bg-clip-text text-4xl font-semibold text-transparent lg:w-[70%] ">
-                Our Vision
-              </h1>
-              <p className="text-base font-medium text-richblack-300 lg:w-[95%]">
-                With this vision in mind, we set out on a journey to create an
-                e-learning platform that would revolutionize the way people
-                learn. Our team of dedicated experts worked tirelessly to
-                develop a robust and intuitive platform that combines
-                cutting-edge technology with engaging content, fostering a
-                dynamic and interactive learning experience.
+        </div>
+      </section>
+
+      {/* Vision + Mission cards */}
+      <section className="border-y border-white/5 bg-richblack-800/30 py-16 lg:py-20">
+        <div className="mx-auto max-w-maxContent px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-8 lg:grid-cols-2 lg:gap-10">
+            <div className="rounded-2xl border border-white/10 bg-richblack-900/80 p-8 shadow-inner sm:p-10">
+              <h2 className="mb-4 text-2xl font-semibold sm:text-3xl">
+                <span className="bg-gradient-to-b from-orange-500 to-amber-600 bg-clip-text text-transparent">
+                  Our vision
+                </span>
+              </h2>
+              <p className="leading-relaxed text-richblack-200">
+                A world where anyone can learn to build software with clarity
+                and confidence—supported by clear curriculum, honest feedback,
+                and tools that respect your time.
               </p>
             </div>
-            <div className="my-24 flex lg:w-[40%] flex-col gap-10">
-              <h1 className="bg-gradient-to-b from-[#1FA2FF] via-[#12D8FA] to-[#A6FFCB] text-transparent bg-clip-text text-4xl font-semibold lg:w-[70%] ">
-              Our Mission
-              </h1>
-              <p className="text-base font-medium text-richblack-300 lg:w-[95%]">
-              Our mission goes beyond just delivering courses online. We wanted to create a vibrant community of learners, where individuals can connect, collaborate, and learn from one another. We believe that knowledge thrives in an environment of sharing and dialogue, and we foster this spirit of collaboration through forums, live sessions, and networking opportunities.
+            <div className="rounded-2xl border border-white/10 bg-richblack-900/80 p-8 shadow-inner sm:p-10">
+              <h2 className="mb-4 text-2xl font-semibold sm:text-3xl">
+                <span className="bg-gradient-to-b from-turquoise-400 to-turquoise-600 bg-clip-text text-transparent">
+                  Our mission
+                </span>
+              </h2>
+              <p className="leading-relaxed text-richblack-200">
+                We are here to help you go from &quot;I watch tutorials&quot; to
+                &quot;I ship projects.&quot; That means community, accountability,
+                and learning paths that line up with what teams actually need on
+                the job.
               </p>
             </div>
           </div>
@@ -104,20 +133,30 @@ const About = () => {
       </section>
 
       <StatsComponenet />
-      <section className="mx-auto mt-20 flex w-11/12 max-w-maxContent flex-col justify-between gap-10 text-white">
-        <LearningGrid />
-        <ContactFormSection />
+
+      <section className="py-12 lg:py-16">
+        <div className="mx-auto max-w-maxContent px-4 sm:px-6 lg:px-8">
+          <LearningGrid />
+        </div>
+        <div className="mt-4 border-t border-white/5 bg-richblack-800/20 py-12 lg:py-16">
+          <div className="mx-auto max-w-maxContent px-4 sm:px-6 lg:px-8">
+            <ContactFormSection />
+          </div>
+        </div>
       </section>
 
-      <div className="relative mx-auto my-20 flex w-11/12 max-w-maxContent flex-col items-center justify-between gap-8 bg-richblack-900 text-white">
-        {/* Reviws from Other Learner */}
-        <h1 className="text-center text-4xl font-semibold mt-8">
-          Reviews from other learners
-        </h1>
-        {/* <ReviewSlider /> */}
+      <div className="mx-auto my-8 max-w-maxContent border-t border-white/5 px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+        <div className="mb-8 text-center">
+          <h2 className="text-2xl font-semibold sm:text-3xl lg:text-4xl">
+            What learners say
+          </h2>
+          <p className="mt-2 text-sm text-richblack-200 sm:text-base">
+            Honest feedback from the VediCode community
+          </p>
+        </div>
         <ReviewSlider />
       </div>
-      {/* <Footer /> */}
+
       <Footer />
     </div>
   )

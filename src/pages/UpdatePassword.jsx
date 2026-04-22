@@ -98,7 +98,7 @@ function UpdatePassword() {
 
             <button
               type="submit"
-              className="mt-6 w-full rounded-[8px] bg-orange-500 py-[12px] px-[12px] font-medium text-richblack-900"
+              className="mt-6 w-full rounded-[8px] bg-orange-500 py-[12px] px-[12px] font-medium text-richblack-900 transition-colors hover:bg-orange-600"
             >
               Reset Password
             </button>

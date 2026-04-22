@@ -28,7 +28,7 @@ const CourseCard = ({cardData, currentCard, setCurrentCard}) => {
 
       <div
         className={`flex justify-between ${
-          currentCard === cardData?.heading ? "text-violet-600" : "text-richblack-300"
+          currentCard === cardData?.heading ? "text-orange-500" : "text-richblack-300"
         } px-6 py-3 font-medium`}
       >
         {/* Level */}

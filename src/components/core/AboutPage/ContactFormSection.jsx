@@ -4,9 +4,12 @@ import ContactUsForm from "../../ContactPage/ContactUsForm";
 const ContactFormSection = () => {
   return (
     <div className="mx-auto">
-      <h1 className="text-center text-4xl font-semibold">Get in Touch</h1>
-      <p className="text-center text-richblack-300 mt-3">
-        We&apos;d love to here for you, Please fill out this form.
+      <h2 className="text-center text-3xl font-semibold sm:text-4xl">
+        Get in touch
+      </h2>
+      <p className="mt-3 text-center text-base text-richblack-200">
+        Have a question or partnership idea? We&apos;d love to hear from
+        you—fill out the form and we&apos;ll get back to you.
       </p>
       <div className="mt-12 mx-auto">
         <ContactUsForm />

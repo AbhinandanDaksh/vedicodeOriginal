@@ -29,11 +29,13 @@ const ExploreMore = () => {
     <div>
       {/* Explore more section */}
       <div>
-        <div className="text-4xl font-semibold text-center my-10">
-          Unlock the
-          <HighlightText text={"Power of Code"} />
-          <p className="text-center text-richblack-300 text-lg font-semibold mt-1">
-            Learn to Build Anything You Can Imagine
+        <div className="my-12 text-center">
+          <h2 className="text-3xl font-semibold sm:text-4xl">
+            Unlock the
+            <HighlightText text={"Power of Code"} />
+          </h2>
+          <p className="mt-2 text-lg font-medium text-richblack-200">
+            Build anything you can imagine—start with a path that fits you
           </p>
         </div>
       </div>

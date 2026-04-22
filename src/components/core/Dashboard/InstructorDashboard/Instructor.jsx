@@ -91,7 +91,7 @@ export default function Instructor() {
               <div className="flex items-center justify-between">
                 <p className="text-lg font-bold text-richblack-5">Your Courses</p>
                 <Link to="/dashboard/my-courses">
-                  <p className="text-xs font-semibold text-violet-600">View All</p>
+                  <p className="text-xs font-semibold text-orange-500">View All</p>
                 </Link>
               </div>
               <div className="my-4 flex items-start space-x-6">

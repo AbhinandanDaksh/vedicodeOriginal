@@ -5,48 +5,53 @@ import CTAButton from "../../../components/core/HomePage/Button";
 const LearningGridArray = [
   {
     order: -1,
-    heading: "World-Class Learning for",
-    highlightText: "Anyone, Anywhere",
+    heading: "Learning built for",
+    highlightText: "real outcomes",
     description:
-      "VediCode partners with more than 275+ leading universities and companies to bring flexible, affordable, job-relevant online learning to individuals and organizations worldwide.",
-    BtnText: "Learn More",
+      "Structured paths, project checkpoints, and feedback so you are not just watching—you are building a portfolio you can show.",
+    BtnText: "Explore courses",
     BtnLink: "/",
   },
   {
     order: 1,
-    heading: "Curriculum Based on Industry Needs",
+    heading: "Aligned with what teams expect",
     description:
-      "Save time and money! The Belajar curriculum is made to be easier to understand and in line with industry needs.",
+      "Topics and projects are chosen to map to real interview and workplace scenarios, not only textbook chapters.",
   },
   {
     order: 2,
-    heading: "Our Learning Methods",
+    heading: "Multiple ways to learn",
     description:
-      "VediCode partners with more than 275+ leading universities and companies to bring",
+      "Video, notes, code-alongs, and assessments—use what works for you and track progress in one place.",
   },
   {
     order: 3,
-    heading: "Certification",
+    heading: "Proof of your skills",
     description:
-      "VediCode partners with more than 275+ leading universities and companies to bring",
+      "Complete milestones and show completed work. Many paths include shareable work you can link on your resume.",
   },
   {
     order: 4,
-    heading: `Rating "Auto-grading"`,
+    heading: "Feedback that moves you forward",
     description:
-      "VediCode partners with more than 275+ leading universities and companies to bring",
+      "Ratings and reviews from peers and instructors help you know what to improve next.",
   },
   {
     order: 5,
-    heading: "Ready to Work",
+    heading: "Job-ready mindset",
     description:
-      "VediCode partners with more than 275+ leading universities and companies to bring",
+      "We emphasize shipping, debugging, and explaining your work—skills every hiring manager cares about.",
   },
-];
+]
 
 const LearningGrid = () => {
   return (
-    <div className="grid mx-auto w-[350px] xl:w-fit grid-cols-1 xl:grid-cols-4 mb-12">
+    <div>
+      <h2 className="mb-10 text-center text-2xl font-semibold sm:text-3xl lg:mb-12">
+        Why learners choose{" "}
+        <span className="text-orange-500">VediCode</span>
+      </h2>
+    <div className="mb-12 grid w-full max-w-6xl grid-cols-1 gap-0 mx-auto xl:w-fit xl:grid-cols-4">
       {LearningGridArray.map((card, i) => {
         return (
           <div
@@ -77,7 +82,9 @@ const LearningGrid = () => {
               </div>
             ) : (
               <div className="p-8 flex flex-col gap-8">
-                <h1 className="text-richblack-5 text-lg">{card.heading}</h1>
+                <h3 className="text-lg font-semibold text-richblack-5">
+                  {card.heading}
+                </h3>
 
                 <p className="text-richblack-300 font-medium">
                   {card.description}
@@ -87,6 +94,7 @@ const LearningGrid = () => {
           </div>
         );
       })}
+    </div>
     </div>
   );
 };

@@ -11,10 +11,10 @@ const LearningLanguageSection = () => {
         <div className="text-4xl font-semibold text-center my-10  text-richblack-800">
             Your swiss knife for
             <HighlightText text={"learning any language"} />
-            <div className="text-center text-richblack-700 font-medium lg:w-[75%] mx-auto leading-6 text-base mt-3">
-              Using spin making learning multiple languages easy. with 20+
-              languages realistic voice-over, progress tracking, custom schedule
-              and more.
+            <div className="mx-auto mt-3 max-w-2xl text-center text-base font-medium leading-relaxed text-richblack-700">
+              Practice with 20+ languages, clear structure, progress tracking,
+              and flexible scheduling—so you can learn the way that fits your
+              life.
             </div>
             <div className="flex flex-col lg:flex-row items-center justify-center mt-8 lg:mt-0">
               <img

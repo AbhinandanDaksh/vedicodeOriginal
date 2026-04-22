@@ -23,14 +23,16 @@ exports.resetPasswordToken = async (req, res) => {
 			},
 			{ new: true }
 		);
-		// console.log("DETAILS", updatedDetails);
-
-		const url = `http://localhost:3000/update-password/${token}`;
+		const clientUrl = (process.env.CLIENT_URL || "http://localhost:3000").replace(
+			/\/$/,
+			""
+		);
+		const url = `${clientUrl}/update-password/${token}`;
 
 		await mailSender(
 			email,
 			"Password Reset",
-			`Your Link for email verification is ${url}. Please click this url to reset your password.`
+			`Reset your password using this link (valid for a limited time):\n\n${url}\n\nIf you did not request a reset, you can ignore this email.`
 		);
 
 		res.json({

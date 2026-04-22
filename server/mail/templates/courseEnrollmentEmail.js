@@ -1,90 +1,23 @@
-exports.courseEnrollmentEmail = (courseName, name) => {
-    const { getMailBranding } = require("./mailLogo");
-    const { clientUrl, logoSrc } = getMailBranding();
-    return `<!DOCTYPE html>
-    <html>
-    
-    <head>
-        <meta charset="UTF-8">
-        <title>Course Registration Confirmation</title>
-        <style>
-            body {
-                background-color: #ffffff;
-                font-family: Arial, sans-serif;
-                font-size: 16px;
-                line-height: 1.4;
-                color: #333333;
-                margin: 0;
-                padding: 0;
-            }
-    
-    
-            .container {
-                max-width: 600px;
-                margin: 0 auto;
-                padding: 20px;
-                text-align: center;
-            }
-    
-            .logo {
-                max-width: 200px;
-                margin-bottom: 20px;
-            }
-    
-            .message {
-                font-size: 18px;
-                font-weight: bold;
-                margin-bottom: 20px;
-            }
-    
-            .body {
-                font-size: 16px;
-                margin-bottom: 20px;
-            }
-    
-            .cta {
-                display: inline-block;
-                padding: 10px 20px;
-                background-color: #1cb0ac;
-                color: #000000;
-                text-decoration: none;
-                border-radius: 5px;
-                font-size: 16px;
-                font-weight: bold;
-                margin-top: 20px;
-            }
-    
-            .support {
-                font-size: 14px;
-                color: #999999;
-                margin-top: 20px;
-            }
-    
-            .highlight {
-                font-weight: bold;
-            }
-        </style>
-    
-    </head>
-    
-    <body>
-        <div class="container">
-            <a href="${clientUrl}"><img class="logo" src="${logoSrc}"
-                    alt="VediCode Logo"></a>
-            <div class="message">Course Registration Confirmation</div>
-            <div class="body">
-                <p>Dear ${name},</p>
-                <p>You have successfully registered for the course <span class="highlight">"${courseName}"</span>. We
-                    are excited to have you as a participant!</p>
-                <p>Please log in to your learning dashboard to access the course materials and start your learning journey.
-                </p>
-                <a class="cta" href="${clientUrl}/dashboard">Go to Dashboard</a>
-            </div>
-            <div class="support">If you have any questions or need assistance, please feel free to reach out to us at<a href="mailto:abhinandandaksh946@gmail.com">abhinandandaksh946@gmail.com</a>. We are here to help!</div>
-        </div>
-    </body>
-    
-    </html>`;
-  };
+const { getMailBranding } = require("./mailLogo");
+const { buildEmailLayout, escapeHtml, fontSerif, fontSans } = require("./mailLayout");
 
-  
+exports.courseEnrollmentEmail = (courseName, name) => {
+  const { clientUrl, logoSrc } = getMailBranding();
+  const safeName = escapeHtml(name);
+  const safeCourse = escapeHtml(courseName);
+  const bodyHtml = `
+    <p style="margin:0 0 6px; font-size:15px; color:#44403c;">Dear ${safeName},</p>
+    <p style="margin:0 0 20px; color:#57534e; font-size:16px; line-height:1.7;">You are now enrolled in</p>
+    <p style="margin:0 0 24px; font-family:${fontSerif}; font-size:20px; font-style:italic; font-weight:500; color:#1c1917; line-height:1.4; text-align:center; padding:16px; border:1px solid #d6d3d1; background:#fafaf8;">&ldquo;${safeCourse}&rdquo;</p>
+    <p style="margin:0; color:#57534e; font-size:16px; line-height:1.7; font-family:${fontSans};">Your materials and progress live in the dashboard. We look forward to seeing what you build.</p>
+  `;
+  return buildEmailLayout({
+    clientUrl,
+    logoSrc,
+    pageTitle: "You are enrolled — VediCode",
+    preheader: `Welcome to “${safeCourse}” on VediCode.`,
+    heading: "You’re in",
+    bodyHtml,
+    primaryCta: { href: `${clientUrl}/dashboard`, label: "Enter your classroom" },
+  });
+};

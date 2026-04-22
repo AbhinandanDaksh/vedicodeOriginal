@@ -1,77 +1,28 @@
+const { getMailBranding } = require("./mailLogo");
+const { buildEmailLayout, escapeHtml, fontSans } = require("./mailLayout");
+
 exports.passwordUpdated = (email, name) => {
-    const { getMailBranding } = require("./mailLogo");
-    const { clientUrl, logoSrc } = getMailBranding();
-	return `<!DOCTYPE html>
-    <html>
-    
-    <head>
-        <meta charset="UTF-8">
-        <title>Password Update Confirmation</title>
-        <style>
-            body {
-                background-color: #ffffff;
-                font-family: Arial, sans-serif;
-                font-size: 16px;
-                line-height: 1.4;
-                color: #333333;
-                margin: 0;
-                padding: 0;
-            }
-    
-    
-            .container {
-                max-width: 600px;
-                margin: 0 auto;
-                padding: 20px;
-                text-align: center;
-            }
-    
-            .logo {
-                max-width: 200px;
-                margin-bottom: 20px;
-            }
-    
-            .message {
-                font-size: 18px;
-                font-weight: bold;
-                margin-bottom: 20px;
-            }
-    
-            .body {
-                font-size: 16px;
-                margin-bottom: 20px;
-            }
-    
-            .support {
-                font-size: 14px;
-                color: #999999;
-                margin-top: 20px;
-            }
-    
-            .highlight {
-                font-weight: bold;
-            }
-        </style>
-    
-    </head>
-    
-    <body>
-        <div class="container">
-            <a href="${clientUrl}"><img class="logo"
-                    src="${logoSrc}" alt="VediCode Logo"></a>
-            <div class="message">Password Update Confirmation</div>
-            <div class="body">
-                <p>Hey ${name},</p>
-                <p>Your password has been successfully updated for the email <span class="highlight">${email}</span>.
-                </p>
-                <p>If you did not request this password change, please contact us immediately to secure your account.</p>
-            </div>
-            <div class="support">If you have any questions or need further assistance, please feel free to reach out to us
-                at
-                <a href="mailto:abhinandandaksh946@gmail.com">abhinandandaksh946@gmail.com</a>. We are here to help!
-            </div>
-        </div>
-    </body>
-    
-    </html>`;
+  const { clientUrl, logoSrc } = getMailBranding();
+  const safeEmail = escapeHtml(email);
+  const safeName = escapeHtml(name);
+  const bodyHtml = `
+    <p style="margin:0 0 6px; font-size:15px; color:#44403c;">Hello ${safeName},</p>
+    <p style="margin:0 0 18px; color:#57534e; font-size:16px; line-height:1.7;">The password for <strong style="color:#1c1917;">${safeEmail}</strong> was updated successfully.</p>
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="margin:0; border-left:2px solid #0d9488; background:#f5f3f0; padding:0;">
+      <tr>
+        <td style="padding:14px 18px; font-size:14px; color:#44403c; font-family:${fontSans}; line-height:1.6;">
+          If you did <em>not</em> make this change, contact us immediately so we can help secure your account.
+        </td>
+      </tr>
+    </table>
+  `;
+  return buildEmailLayout({
+    clientUrl,
+    logoSrc,
+    pageTitle: "Password updated — VediCode",
+    preheader: "Your VediCode password was changed.",
+    heading: "Password updated",
+    bodyHtml,
+    primaryCta: { href: `${clientUrl}/login`, label: "Sign in" },
+  });
 };

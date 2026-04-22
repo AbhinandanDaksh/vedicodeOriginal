@@ -1,99 +1,41 @@
+const { getMailBranding } = require("./mailLogo");
+const { buildEmailLayout, escapeHtml, fontSans } = require("./mailLayout");
+
 exports.contactUsEmail = (
-    email,
-    firstname,
-    lastname,
-    message,
-    phoneNo,
-    countrycode
-  ) => {
-    const { getMailBranding } = require("./mailLogo");
-    const { clientUrl, logoSrc } = getMailBranding();
-    return `<!DOCTYPE html>
-    <html>
-    
-    <head>
-        <meta charset="UTF-8">
-        <title>Contact Form Confirmation</title>
-        <style>
-            body {
-                background-color: #ffffff;
-                font-family: Arial, sans-serif;
-                font-size: 16px;
-                line-height: 1.4;
-                color: #333333;
-                margin: 0;
-                padding: 0;
-            }
-    
-    
-            .container {
-                max-width: 600px;
-                margin: 0 auto;
-                padding: 20px;
-                text-align: center;
-            }
-    
-            .logo {
-                max-width: 200px;
-                margin-bottom: 20px;
-            }
-    
-            .message {
-                font-size: 18px;
-                font-weight: bold;
-                margin-bottom: 20px;
-            }
-    
-            .body {
-                font-size: 16px;
-                margin-bottom: 20px;
-            }
-    
-            .cta {
-                display: inline-block;
-                padding: 10px 20px;
-                background-color: #1cb0ac;
-                color: #000000;
-                text-decoration: none;
-                border-radius: 5px;
-                font-size: 16px;
-                font-weight: bold;
-                margin-top: 20px;
-            }
-    
-            .support {
-                font-size: 14px;
-                color: #999999;
-                margin-top: 20px;
-            }
-    
-            .highlight {
-                font-weight: bold;
-            }
-        </style>
-    
-    </head>
-    
-    <body>
-        <div class="container">
-            <a href="${clientUrl}"><img class="logo"
-                    src="${logoSrc}" alt="VediCode Logo"></a>
-            <div class="message">Contact Form Confirmation</div>
-            <div class="body">
-                <p>Dear ${firstname} ${lastname},</p>
-                <p>Thank you for contacting us. We have received your message and will respond to you as soon as possible.
-                </p>
-                <p>Here are the details you provided:</p>
-                <p>Name: ${firstname} ${lastname}</p>
-                <p>Email: ${email}</p>
-                <p>Phone Number: ${phoneNo}</p>
-                <p>Message: ${message}</p>
-                <p>We appreciate your interest and will get back to you shortly. </p>
-            </div>
-            <div class="support">If you have any further questions or need immediate assistance, please feel free to reach
-                out to us at<a href="mailto:abhinandandaksh946@gmail.com">abhinandandaksh946@gmail.com</a>. We are here to help!</div>
-        </div>
-    </body>
-    
-    </html>`
-  }
+  email,
+  firstname,
+  lastname,
+  message,
+  phoneNo,
+  countrycode
+) => {
+  const { clientUrl, logoSrc } = getMailBranding();
+  const e = escapeHtml(email);
+  const fn = escapeHtml(firstname);
+  const ln = escapeHtml(lastname);
+  const ph = escapeHtml(phoneNo);
+  const cc = escapeHtml(countrycode);
+  const msg = escapeHtml(message).replace(/\n/g, "<br/>");
+  const bodyHtml = `
+    <p style="margin:0 0 6px; font-size:15px; color:#44403c;">Hello ${fn} ${ln},</p>
+    <p style="margin:0 0 22px; color:#57534e; font-size:16px; line-height:1.7;">We’ve received your note and a member of the team will respond shortly. A copy of your message is below.</p>
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background:#fffcf9; border:1px solid #d6d3d1; border-radius:2px;">
+      <tr>
+        <td style="padding:22px 24px; font-size:14px; color:#44403c; line-height:1.65; font-family:${fontSans};">
+          <p style="margin:0 0 14px; padding-bottom:14px; border-bottom:1px solid #e7e5e4;"><span style="font-size:10px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:#78716c; display:block; margin-bottom:4px;">Email</span>${e}</p>
+          <p style="margin:0 0 14px; padding-bottom:14px; border-bottom:1px solid #e7e5e4;"><span style="font-size:10px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:#78716c; display:block; margin-bottom:4px;">Phone</span>${cc} ${ph}</p>
+          <p style="margin:0;"><span style="font-size:10px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:#78716c; display:block; margin-bottom:6px;">Message</span>${msg}</p>
+        </td>
+      </tr>
+    </table>
+  `;
+  return buildEmailLayout({
+    clientUrl,
+    logoSrc,
+    pageTitle: "We received your message — VediCode",
+    preheader: "Thank you — we’ll be in touch soon.",
+    heading: "Thank you for writing",
+    bodyHtml,
+    primaryCta: { href: clientUrl, label: "Return to VediCode" },
+  });
+};

@@ -18,6 +18,6 @@ exports.courseEnrollmentEmail = (courseName, name) => {
     preheader: `Welcome to “${safeCourse}” on VediCode.`,
     heading: "You’re in",
     bodyHtml,
-    primaryCta: { href: `${clientUrl}/dashboard`, label: "Enter your classroom" },
+    primaryCta: { href: `${clientUrl}/dashboard/enrolled-courses`, label: "Enter your classroom" },
   });
 };

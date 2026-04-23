@@ -38,6 +38,6 @@ exports.paymentSuccessEmail = (name, amount, orderId, paymentId) => {
     preheader: `Receipt · ₹${safeAmount} · ${safeOrder}`,
     heading: "Payment received",
     bodyHtml,
-    primaryCta: { href: `${clientUrl}/dashboard`, label: "View your space" },
+    primaryCta: { href: `${clientUrl}/dashboard/enrolled-courses`, label: "View your space" },
   });
 };

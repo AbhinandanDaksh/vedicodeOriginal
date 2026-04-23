@@ -15,13 +15,13 @@ const contactDetails = [
     heading: "Visit us",
     description: "Come and say hello at our office HQ.",
     details:
-      "Akshya Nagar 1st Block 1st Cross, Rammurthy nagar, Uttarprdesh-201206",
+      "Akshya Nagar 1st Block 1st Cross, Modi nagar, Uttarprdesh-201204",
   },
   {
     icon: "IoCall",
     heading: "Call us",
     description: "Mon - Fri From 8am to 5pm",
-    details: "+91 8791653041",
+    details: "+91 8741653045",
   },
 ]
 
